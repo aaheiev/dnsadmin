@@ -42,13 +42,18 @@ class NagiosStatusesController < ApplicationController
   # POST /nagios_statuses.json
   def create
     monitor_ip = request.env['HTTP_X_REAL_IP'] || request.remote_addr
+    monitor = Host.find_by_ip(monitor_ip)
 
     case params[:object_type]
     when "service"
       @app_service = AppService.find(params[:app_service][:id])
       nagios_status = params[:nagios_status]
-      nagios_status[:monitor_id] = 33
+      unless monitor.nil?
+        nagios_status[:monitor_id] = monitor.id
+      end
+
       @app_service.nagios_statuses.create(nagios_status)
+
       render :inline => "ok! monitor_ip " + monitor_ip
     else
       render :inline => "unknown object typ emonitor_ip " + monitor_ip
