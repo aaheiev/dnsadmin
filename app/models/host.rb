@@ -37,5 +37,5 @@ class Host < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :ip, uniqueness: true
   validates :provider_id, presence: true
-  validates :hoststatus, :inclusion => { :in => %w(UP DOWN) }
+  validates :hoststate, :inclusion => { :in => %w(UP DOWN) }
 end
