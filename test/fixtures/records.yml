@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: records
+#
+#  id          :integer          not null, primary key
+#  domain_id   :integer          not null
+#  name        :string(255)
+#  type        :string(10)
+#  content     :text
+#  ttl         :integer
+#  prio        :integer
+#  change_date :integer
+#  ordername   :string(255)
+#  auth        :boolean
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

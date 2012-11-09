@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Statusable:</b>
+  <%= @nagios_status.statusable %>
+</p>
+
+<p>
+  <b>Monitor:</b>
+  <%= @nagios_status.monitor %>
+</p>
+
+<p>
+  <b>Event type:</b>
+  <%= @nagios_status.event_type %>
+</p>
+
+<p>
+  <b>Event status:</b>
+  <%= @nagios_status.event_status %>
+</p>
+
+<p>
+  <b>Event message:</b>
+  <%= @nagios_status.event_message %>
+</p>
+
+<p>
+  <b>Event time:</b>
+  <%= @nagios_status.event_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_nagios_status_path(@nagios_status) %> |
+<%= link_to 'Back', nagios_statuses_path %>

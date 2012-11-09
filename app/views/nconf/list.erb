@@ -1,0 +1,11 @@
+REMOTE_ADDR: <%= request.env['REMOTE_ADDR'] %><br />
+X-Real-IP: <%= request.env['HTTP_X_REAL_IP'] %><br />
+<hr />
+<ul>
+<% @app_services.each do |s|%>
+  <li>
+    <%= s.name %><br />
+    <%= s.ip %>
+  </li>
+<% end %>
+</ul>

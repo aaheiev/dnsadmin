@@ -1,0 +1,14 @@
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Domain Type</th>
+    <th>Registrator</th>
+  </tr>
+<% @domains.each do |domain| %>
+  <tr>
+    <td><%= domain.name %></td>
+    <td><%= domain.domain_type.domain_type rescue '' %></td>
+    <td><%= domain.provider.title rescue '' %></td>
+  </tr>
+<% end %>
+</table>

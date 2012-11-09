@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: app_services
+#
+#  id     :integer          not null, primary key
+#  name   :string(255)
+#  app_id :integer
+#  ip     :string(16)
+#  prio   :integer          default(0)
+#  active :boolean          default(TRUE)
+#  status :string(255)      default("UP")
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  app: 
+  ip: 
+  prio: 1
+  active: false
+  status: MyString
+
+two:
+  name: MyString
+  app: 
+  ip: 
+  prio: 1
+  active: false
+  status: MyString

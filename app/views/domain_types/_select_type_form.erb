@@ -1,0 +1,19 @@
+<%= form_tag("/dns/index", :method => "get", :html => { :class => "form-horizontal" }) do %>
+  <fieldset class="h10">
+    <div class="control-group">
+      <div class="controls">
+
+        <% @domain_types.each do |type| %>
+          <%= label_tag "domain_type_id[#{type.id}]", :class => "checkbox" do %>
+            <% if !params[:domain_type_id].nil? && params[:domain_type_id].has_key?("#{type.id}") %>
+              <%= check_box_tag "domain_type_id[#{type.id}]", type.id, :checked %><%= type.domain_type %>
+            <% else %>
+              <%= check_box_tag "domain_type_id[#{type.id}]", type.id %><%= type.domain_type %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </fieldset>
+  <%= submit_tag("Search",:class => "btn-primary") %>
+<% end %>

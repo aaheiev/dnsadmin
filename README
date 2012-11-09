@@ -1,0 +1,21 @@
+Git global setup:
+
+git config --global user.name "Andrey Ageyev"
+git config --global user.email "a.ageyev@gmail.com"
+
+Create Repository
+
+mkdir dnsadmin
+cd dnsadmin
+git init
+touch README
+git add README
+git commit -m 'first commit'
+git remote add origin git@code.tera-center.com:dnsadmin.git
+git push -u origin master
+
+Existing Git Repo?
+
+cd existing_git_repo
+git remote add origin git@code.tera-center.com:dnsadmin.git
+git push -u origin master

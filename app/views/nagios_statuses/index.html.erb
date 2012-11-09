@@ -1,0 +1,33 @@
+<h1>Listing nagios_statuses</h1>
+
+<table>
+  <tr>
+    <th>Statusable</th>
+    <th>Monitor</th>
+    <th>Event type</th>
+    <th>Event status</th>
+    <th>Event message</th>
+    <th>Event time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @nagios_statuses.each do |nagios_status| %>
+  <tr>
+    <td><%= nagios_status.statusable_type %></td>
+    <td><%= nagios_status.monitor %></td>
+    <td><%= nagios_status.event_type %></td>
+    <td><%= nagios_status.event_status %></td>
+    <td><%= nagios_status.event_message %></td>
+    <td><%= nagios_status.created_at %></td>
+    <td><%= link_to 'Show', nagios_status %></td>
+    <td><%= link_to 'Edit', edit_nagios_status_path(nagios_status) %></td>
+    <td><%= link_to 'Destroy', nagios_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Nagios status', new_nagios_status_path %>

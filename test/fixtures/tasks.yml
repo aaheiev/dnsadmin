@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id         :integer          not null, primary key
+#  done       :boolean          default(FALSE)
+#  name       :string(255)      not null
+#  notes      :text
+#  priority   :integer          default(0)
+#  due        :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  done: false
+  name: MyString
+  notes: MyText
+  priority: 1
+  due: 2012-11-08
+
+two:
+  done: false
+  name: MyString
+  notes: MyText
+  priority: 1
+  due: 2012-11-08

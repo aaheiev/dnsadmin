@@ -1,0 +1,19 @@
+<%= @http_sites_group %>
+<hr />
+<%= @https_sites_group %>
+<hr />
+<pre>
+<% @web_sites.each do |http_site|%>
+
+define host{
+  host_name <%= http_site.name %>.<%= http_site.prio %>.<%= http_site.ip_address.host.id %>
+  address   <%= http_site.ip %>
+  _app_uri  <%= http_site.app.name %>
+  }
+<% end %>
+define hostgroup {
+  hostgroup_name wp
+  alias          wp nginx servers
+  members        <%= @wp_group %>
+  }
+</pre>

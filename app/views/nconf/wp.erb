@@ -1,0 +1,34 @@
+<pre>
+define host{
+  name                  wp-host
+  use                   frontend-host
+  check_command         check-host-alive
+  register              0
+  }
+define service{
+  name                  wp-service   ; The 'name' of this service template
+  use                   frontend-service ;
+  register              0                ;
+  }
+define service {
+  hostgroup_name        wp
+  service_description   shop proxy
+  check_command         check-shop-proxy
+  use                   wp-service
+  notification_interval 0 ; set > 0 if you want to be renotified
+  }
+
+<% @servers.each do |s|%>
+define host{
+  use                   wp-host
+  host_name             <%= s.name %>
+  address               <%= s.ip %>
+  }
+<% end %>
+define hostgroup {
+  hostgroup_name        wp
+  alias                 wp shop proxy
+  members               <%= @group %>
+  }
+
+</pre>

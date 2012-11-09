@@ -1,0 +1,38 @@
+<pre>
+define host{
+  name                  ns-host
+  use                   frontend-host
+  check_command         check-host-alive
+  register              0
+  }
+define service{
+  name                  ns-service   ; The 'name' of this service template
+  use                   frontend-service ;
+  register              0                ;
+  }
+define service {
+  hostgroup_name        dns
+  service_description   dns service
+  check_command         check-dns
+  use                   ns-service
+  notification_interval 0 ; set > 0 if you want to be renotified
+  }
+
+<% @servers.each do |s|%>
+define host{
+  use                   ns-host
+  host_name             <%= s.name %>
+  address               <%= s.ip %>
+  _domain               <%= s.app.domain.name %>
+  _host_id              <%= s.ip_address.host.id %>
+  _app_service_id       <%= s.id %>
+  _app_type             <%= s.app.app_type %>
+  }
+<% end %>
+
+define hostgroup {
+  hostgroup_name        dns
+  alias                 dns servers
+  members               <%= @group %>
+  }
+</pre>

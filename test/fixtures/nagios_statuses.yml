@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: nagios_statuses
+#
+#  id              :integer          not null, primary key
+#  statusable_id   :integer
+#  statusable_type :string(255)
+#  monitor_id      :integer
+#  event_type      :string(255)
+#  event_status    :string(255)
+#  event_message   :string(255)
+#  event_time      :datetime
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  statusable: 
+  monitor: 
+  event_type: MyString
+  event_status: MyString
+  event_message: MyString
+  event_time: 2012-11-09 13:15:30
+
+two:
+  statusable: 
+  monitor: 
+  event_type: MyString
+  event_status: MyString
+  event_message: MyString
+  event_time: 2012-11-09 13:15:30

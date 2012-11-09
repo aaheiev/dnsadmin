@@ -1,0 +1,15 @@
+<% provide(:title, 'Domains') %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span4">
+      <%= render 'domain_types/select_type_form' %>
+      <pre><%= params[:domain_type_id].keys rescue '' %></pre>
+      <pre><%= @s_types rescue '' %></pre>
+      <!--Sidebar content-->
+    </div>
+    <div class="span8">
+      <%= render 'domains/list' %>
+    </div>
+  </div>
+</div>

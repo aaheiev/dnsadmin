@@ -1,0 +1,52 @@
+<pre>
+define host{
+  name                  web-app-site
+  use                   frontend-host
+  check_command         check-host-alive
+  register              0
+  }
+define service{
+  name                  web-app-service
+  use                   frontend-service
+  register              0
+  }
+
+define service {
+  hostgroup_name        http-sites
+  service_description   HTTP App Sites
+  check_command         check-http-site
+  use                   web-app-service
+  notification_interval 0
+  }
+
+define service {
+  hostgroup_name        https-sites
+  service_description   HTTPS App Sites
+  check_command         check-https-site
+  use                   web-app-service
+  notification_interval 0
+  }
+<% @sites.each do |s|%>
+define host{
+  use                   web-app-site
+  host_name             <%= s.name %>.<%= s.prio %>.<%= s.ip_address.host_id %>
+  address               <%= s.ip %>
+  _app_uri              <%= s.app.name %>
+  _host_id              <%= s.ip_address.host.id %>
+  _app_service_id       <%= s.id %>
+  _app_type             <%= s.app.app_type %>
+  }
+<% end %>
+
+define hostgroup {
+  hostgroup_name        http-sites
+  alias                 http sites
+  members               <%= @http_sites_group %>
+  }
+define hostgroup {
+  hostgroup_name        https-sites
+  alias                 https sites
+  members               <%= @https_sites_group %>
+  }
+
+</pre>
