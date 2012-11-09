@@ -41,7 +41,8 @@ class NagiosStatusesController < ApplicationController
   # POST /nagios_statuses
   # POST /nagios_statuses.json
   def create
-    monitor_ip = request.env["HTTP_X_FORWARDED_FOR"] || request.remote_addr
+    monitor_ip = request.env['HTTP_X_REAL_IP'] || request.remote_addr
+
     case params[:object_type]
     when "service"
       @app_service = AppService.find(params[:app_service][:id])
